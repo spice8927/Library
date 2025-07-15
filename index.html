@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lagos State University CSC Library</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">
+        <div class="logo">
+          <img src="lagos-state-university-logo-transparent.png" alt="Lagos State University CSC Library Logo" />
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <?php if ($isLoggedIn): ?>
+                 <?php else: ?>
+          <a href="signup.html"><button class="sign-in-btn">Sign In</button></a>
+          <a href="login.html">Login</a>
+        <?php endif; ?>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to Lagos State University CSC Library</h1>
+      <marquee scrollamount="5" style="color: blue;">
+        <p>Your gateway to endless knowledge and discovery</p>
+      </marquee>
+      <div class="search-container">
+        <input type="text" placeholder="Search for books, authors, or categories..." />
+        <button class="search-btn">Search</button>
+      </div>
+    </section>
+
+    <section class="featured-books">
+      <h2>Featured Books</h2>
+      <div class="container">
+        <div class="category-grid1">
+          <div class="category-card1">
+            <a href="login.html">
+              <img src="PHY101.jpg" alt="PHY 101" width="150" height="150" style="margin: 10px;">
+            </a>
+          </div>
+        </div>
+        <div class="category-grid1">
+          <div class="category-card1">
+            <a href="login.html">
+              <img src="GNS101.jpg" alt="GNS 101" width="150" height="150" style="margin: 10px;">
+            </a>
+          </div>
+        </div>
+        <div class="category-grid1">
+          <div class="category-card1">
+            <a href="login.html">
+              <img src="MAT 101.jpg" alt="MAT 101" width="150" height="150" style="margin: 10px;">
+            </a>
+          </div>
+        </div>
+        <div class="category-grid1">
+          <div class="category-card1">
+            <a href="login.html">
+              <img src="GNS101.jpg" alt="GNS 102" width="150" height="150" style="margin: 10px;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <h2>Popular Categories</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <a href="<?php echo $isLoggedIn ? 'book.html' : 'login.html'; ?>">Books</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Lagos State University CSC Library</h3>
+        <p>For Truth and Service.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="<?php echo $isLoggedIn ? 'book.html' : 'login.html'; ?>">Books</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: fatiledavid69@gmail.com</p>
+        <p>Phone: 08028066211</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; Lagos State University CSC Library. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBtn = document.querySelector('.search-btn');
+      const searchInput = document.querySelector('.search-container input');
+
+      searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query.length === 0) {
+          alert("Please enter a search term.");
+          return;
+        }
+        window.location.href = 'search.php?q=' + encodeURIComponent(query);
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          searchBtn.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

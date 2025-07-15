@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results | LASU CSC Library</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="dashboard.php">
+        <div class="logo">
+          <img src="lagos-state-university-logo-transparent.png" alt="Logo" />
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="book.html">Books</a>
+        <a href="logout.php" class="sign-in-btn">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main style="margin-top: 6rem; padding: 2rem;">
+    <h1 style="text-align: center; color: var(--primary-dark);">Search Results</h1>
+    <div id="searchResults" class="book-grid" style="margin-top: 2rem;"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Lagos State University CSC Library</h3>
+        <p>For Truth and Service.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="book.html">Books</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: fatiledavid69@gmail.com</p>
+        <p>Phone: 08028066211</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; Lagos State University CSC Library. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q')?.trim().toLowerCase();
+    const resultsContainer = document.getElementById('searchResults');
+
+    const books = [
+      { title: "PHY 101", author: "Author 1", img: "PHY101.jpg", file: "PHY_101_NOTE_-_MECHANICS_-GENERAL_PHYSICS_I-.pdf" },
+      { title: "GNS 101", author: "Author 2", img: "GNS101.jpg", file: "gns_101_vol_2.pdf" },
+      { title: "MAT 101", author: "Author 3", img: "MAT 101.jpg", file: "BundayMulholland-PureMathematicsForAdvancedLevel (1).pdf" },
+      { title: "GNS 102", author: "Author 4", img: "GNS101.jpg", file: "gns_101_vol_2.pdf" }
+    ];
+
+    if (!query) {
+      resultsContainer.innerHTML = `<p style="text-align:center;">No search query provided.</p>`;
+    } else {
+      const results = books.filter(book =>
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `<p style="text-align:center;">No results found for "<strong>${query}</strong>".</p>`;
+      } else {
+        resultsContainer.innerHTML = results.map(book => `
+          <div class="book-card">
+            <img src="${book.img}" alt="${book.title}" />
+            <div class="book-info">
+              <h3>${book.title}</h3>
+              <p>By ${book.author}</p>
+              <a href="${book.file}" class="sign-in-btn" style="margin-top: 1rem; display: inline-block;">View</a>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  </script>
+</body>
+</html>

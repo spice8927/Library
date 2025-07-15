@@ -1,0 +1,86 @@
+/* auth.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F0F8FF; /* Light blue background */
+    color: #333; /* Dark text color */
+  }
+  
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .logo img {
+    width: 150px; /* Adjust the width as needed */
+    height: 40; /* Maintain aspect ratio */
+}
+  .auth-card {
+    background-color: #fff;
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+  }
+  
+  .auth-header {
+    text-align: center;
+  }
+  
+  .auth-header h1 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .password-toggle {
+    position: absolute; 
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+  }
+  
+  .fa-eye-slash {
+    color: #888; 
+  }
+
+  .auth-form {
+    margin-top: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .auth-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .auth-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .auth-footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
